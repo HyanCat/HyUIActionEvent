@@ -1,6 +1,5 @@
 //
 //  HyUIActionEvent.m
-//  HyUIActionEvent-Demo
 //
 //  Created by HyanCat on 16/3/30.
 //  Copyright © 2016年 hyancat. All rights reserved.
