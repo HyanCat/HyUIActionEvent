@@ -13,5 +13,6 @@
 #import <HyUIActionEvent/UIResponder+HyUIActionEvent.h>
 #import <HyUIActionEvent/HyUIActionEvent+Transition.h>
 #import <HyUIActionEvent/UIControl+HyUIActionEvent.h>
+#import <HyUIActionEvent/UIView+HyUIActionEvent.h>
 
 #endif /* HyUIActionCore_h */
