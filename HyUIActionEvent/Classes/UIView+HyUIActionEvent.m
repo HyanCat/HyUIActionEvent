@@ -11,9 +11,9 @@
 #import "UIResponder+HyUIActionEvent.h"
 #import <objc/runtime.h>
 
-const void *kHyUIActionEventNameKey     = &kHyUIActionEventNameKey;
-const void *kHyUIActionEventUserInfoKey = &kHyUIActionEventUserInfoKey;
-const void *kHyUIActionEventGestureKey  = &kHyUIActionEventGestureKey;
+const void *kHyUIViewActionEventNameKey     = &kHyUIViewActionEventNameKey;
+const void *kHyUIViewActionEventUserInfoKey = &kHyUIViewActionEventUserInfoKey;
+const void *kHyUIViewActionEventGestureKey  = &kHyUIViewActionEventGestureKey;
 
 @implementation UIView (HyUIActionEvent)
 
@@ -22,14 +22,14 @@ const void *kHyUIActionEventGestureKey  = &kHyUIActionEventGestureKey;
 
 - (NSString *)eventName
 {
-	return objc_getAssociatedObject(self, kHyUIActionEventNameKey);
+	return objc_getAssociatedObject(self, kHyUIViewActionEventNameKey);
 }
 
 - (void)setEventName:(NSString *)eventName
 {
 	[self removeGestureRecognizer:self.eventGesture];
 	
-	objc_setAssociatedObject(self, kHyUIActionEventNameKey, eventName, OBJC_ASSOCIATION_COPY_NONATOMIC);
+	objc_setAssociatedObject(self, kHyUIViewActionEventNameKey, eventName, OBJC_ASSOCIATION_COPY_NONATOMIC);
 	
 	if (eventName && eventName.length > 0) {
 		UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_handleTouchEvent:)];
@@ -40,22 +40,22 @@ const void *kHyUIActionEventGestureKey  = &kHyUIActionEventGestureKey;
 
 - (NSDictionary *)eventUserInfo
 {
-	return objc_getAssociatedObject(self, kHyUIActionEventUserInfoKey);
+	return objc_getAssociatedObject(self, kHyUIViewActionEventUserInfoKey);
 }
 
 - (void)setEventUserInfo:(NSDictionary *)eventUserInfo
 {
-	objc_setAssociatedObject(self, kHyUIActionEventUserInfoKey, eventUserInfo, OBJC_ASSOCIATION_COPY_NONATOMIC);
+	objc_setAssociatedObject(self, kHyUIViewActionEventUserInfoKey, eventUserInfo, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 - (UITapGestureRecognizer *)eventGesture
 {
-	return objc_getAssociatedObject(self, kHyUIActionEventGestureKey);
+	return objc_getAssociatedObject(self, kHyUIViewActionEventGestureKey);
 }
 
 - (void)setEventGesture:(UITapGestureRecognizer *)eventGesture
 {
-	objc_setAssociatedObject(self, kHyUIActionEventGestureKey, eventGesture, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+	objc_setAssociatedObject(self, kHyUIViewActionEventGestureKey, eventGesture, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (void)_handleTouchEvent:(id)sender

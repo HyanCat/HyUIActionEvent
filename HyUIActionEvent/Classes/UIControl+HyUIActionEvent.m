@@ -11,8 +11,8 @@
 #import "UIResponder+HyUIActionEvent.h"
 
 
-const void *kHyUIActionEventNameKey     = &kHyUIActionEventNameKey;
-const void *kHyUIActionEventUserInfoKey = &kHyUIActionEventUserInfoKey;
+const void *kHyUIControlActionEventNameKey     = &kHyUIControlActionEventNameKey;
+const void *kHyUIControlActionEventUserInfoKey = &kHyUIControlActionEventUserInfoKey;
 
 @implementation UIControl (HyUIActionEvent)
 
@@ -21,14 +21,14 @@ const void *kHyUIActionEventUserInfoKey = &kHyUIActionEventUserInfoKey;
 
 - (NSString *)eventName
 {
-	return objc_getAssociatedObject(self, kHyUIActionEventNameKey);
+	return objc_getAssociatedObject(self, kHyUIControlActionEventNameKey);
 }
 
 - (void)setEventName:(NSString *)eventName
 {
 	[self removeTarget:self action:@selector(_handleTouchEvent:) forControlEvents:UIControlEventTouchUpInside];
 
-	objc_setAssociatedObject(self, kHyUIActionEventNameKey, eventName, OBJC_ASSOCIATION_COPY_NONATOMIC);
+	objc_setAssociatedObject(self, kHyUIControlActionEventNameKey, eventName, OBJC_ASSOCIATION_COPY_NONATOMIC);
 
 	if (eventName && eventName.length > 0) {
 		[self addTarget:self action:@selector(_handleTouchEvent:) forControlEvents:UIControlEventTouchUpInside];
@@ -37,18 +37,17 @@ const void *kHyUIActionEventUserInfoKey = &kHyUIActionEventUserInfoKey;
 
 - (NSDictionary *)eventUserInfo
 {
-	return objc_getAssociatedObject(self, kHyUIActionEventUserInfoKey);
+	return objc_getAssociatedObject(self, kHyUIControlActionEventUserInfoKey);
 }
 
 - (void)setEventUserInfo:(NSDictionary *)eventUserInfo
 {
-	objc_setAssociatedObject(self, kHyUIActionEventUserInfoKey, eventUserInfo, OBJC_ASSOCIATION_COPY_NONATOMIC);
+	objc_setAssociatedObject(self, kHyUIControlActionEventUserInfoKey, eventUserInfo, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 - (void)_handleTouchEvent:(id)sender
 {
 	[self dispatchHyUIActionEvent:[HyUIActionEvent eventWithName:self.eventName object:self userInfo:self.eventUserInfo] inMainThead:YES];
 }
-
 
 @end
