@@ -32,6 +32,7 @@ const void *kHyUIViewActionEventGestureKey  = &kHyUIViewActionEventGestureKey;
 	objc_setAssociatedObject(self, kHyUIViewActionEventNameKey, eventName, OBJC_ASSOCIATION_COPY_NONATOMIC);
 	
 	if (eventName && eventName.length > 0) {
+        self.userInteractionEnabled = YES;
 		UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_handleTouchEvent:)];
 		self.eventGesture = tapGesture;
 		[self addGestureRecognizer:tapGesture];
