@@ -59,6 +59,19 @@ const void *kHyUIViewActionEventGestureKey  = &kHyUIViewActionEventGestureKey;
 	objc_setAssociatedObject(self, kHyUIViewActionEventGestureKey, eventGesture, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+- (void)resetEvent
+{
+    self.eventName = nil;
+    self.eventUserInfo = nil;
+}
+
+- (void)removeEvent
+{
+    [self resetEvent];
+    [self removeGestureRecognizer:self.eventGesture];
+    self.eventGesture = nil;
+}
+
 - (void)_handleTouchEvent:(id)sender
 {
 	[self dispatchHyUIActionEvent:[HyUIActionEvent eventWithName:self.eventName object:self userInfo:self.eventUserInfo] inMainThead:YES];

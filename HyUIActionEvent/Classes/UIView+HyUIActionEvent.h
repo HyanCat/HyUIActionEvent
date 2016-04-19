@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSDictionary *eventUserInfo;
 @property (nullable, nonatomic, strong) UITapGestureRecognizer *eventGesture;
 
+- (void)resetEvent;
+- (void)removeEvent;
+
 @end
 
 NS_ASSUME_NONNULL_END
