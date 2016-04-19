@@ -7,6 +7,11 @@
 
 #import "HyUIActionEvent.h"
 
+HyUIActionEvent *HyUIEvent(NSString *name, id object, NSDictionary *userInfo)
+{
+    return [HyUIActionEvent eventWithName:name object:object userInfo:userInfo];
+}
+
 @interface HyUIActionEvent ()
 
 @property (nonatomic, copy, readwrite) NSString *eventName;

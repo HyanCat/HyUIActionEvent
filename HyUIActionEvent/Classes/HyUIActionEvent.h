@@ -9,6 +9,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class HyUIActionEvent;
+HyUIActionEvent *HyUIEvent(NSString *name, id _Nullable object, NSDictionary * _Nullable userInfo);
+
 @interface HyUIActionEvent : NSObject
 
 + (instancetype)eventWithName:(NSString *)name;
