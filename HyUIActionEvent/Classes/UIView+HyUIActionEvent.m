@@ -72,9 +72,51 @@ const void *kHyUIViewActionEventGestureKey  = &kHyUIViewActionEventGestureKey;
     self.eventGesture = nil;
 }
 
+- (void)lock
+{
+    [self lockUntil:60];
+}
+
+- (void)lockUntil:(NSTimeInterval)afterTime
+{
+    if ([NSThread isMainThread]) {
+        [self _lockUntil:afterTime];
+    }
+    else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self _lockUntil:afterTime];
+        });
+    }
+}
+
+- (void)unlock
+{
+    if ([NSThread isMainThread]) {
+        [self _unlock];
+    }
+    else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self _unlock];
+        });
+    }
+}
+
 - (void)_handleTouchEvent:(id)sender
 {
 	[self dispatchHyUIActionEvent:[HyUIActionEvent eventWithName:self.eventName object:self userInfo:self.eventUserInfo] inMainThead:YES];
+}
+
+- (void)_lockUntil:(NSTimeInterval)afterTime
+{
+    self.eventGesture.enabled = NO;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(afterTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self _unlock];
+    });
+}
+
+- (void)_unlock
+{
+    self.eventGesture.enabled = YES;
 }
 
 @end

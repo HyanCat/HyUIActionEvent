@@ -14,6 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *eventName;
 @property (nullable, nonatomic, copy) NSDictionary *eventUserInfo;
 
+- (void)lock;
+- (void)lockUntil:(NSTimeInterval)afterTime;
+- (void)unlock;
+
 @end
 
 NS_ASSUME_NONNULL_END

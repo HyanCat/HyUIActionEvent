@@ -18,6 +18,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)resetEvent;
 - (void)removeEvent;
 
+- (void)lock;
+- (void)lockUntil:(NSTimeInterval)afterTime;
+- (void)unlock;
+
 @end
 
 NS_ASSUME_NONNULL_END
