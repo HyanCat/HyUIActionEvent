@@ -6,6 +6,7 @@ Pod::Spec.new do |s|
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
 
   s.description      = <<-DESC
+  A Respond Chain Tool for UIResponder.
                        DESC
 
   s.homepage         = "https://github.com/HyanCat/HyUIActionEvent"
