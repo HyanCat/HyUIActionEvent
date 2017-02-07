@@ -1,0 +1,16 @@
+PODS:
+  - HyUIActionEvent (0.1.0)
+
+DEPENDENCIES:
+  - HyUIActionEvent (from `../`)
+
+EXTERNAL SOURCES:
+  HyUIActionEvent:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  HyUIActionEvent: 269b1ddcc1254f5df2fa75180007b332fbf77993
+
+PODFILE CHECKSUM: be3d47e3053098df4b1a27e7782c04369783ac28
+
+COCOAPODS: 1.1.1

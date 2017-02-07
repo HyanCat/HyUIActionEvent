@@ -58,16 +58,43 @@ const char *dispatchUIEventQueueName = "HyUIActionEventDispatchQueue";
 		}
 	}
 	
-	UIResponder * next = [self nextResponder];
-	if (next == nil && [self isKindOfClass:[UIViewController class]]) {
-		next = [(UIViewController *)self parentViewController];
-	}
+    UIResponder *next = [self nextEventResponder];
 	if (next) {
 		[next dispatchHyUIActionEvent:actionEvent inMainThead:[NSThread isMainThread]];
 	}
 	else {
 		NSLog(@"Failed to dispatch HyUIActionEvent，Cann't find [%@] selector!", actionSelectorName);
 	}
+}
+
+- (UIResponder *)nextEventResponder
+{
+    UIResponder *next;
+    if ([self isKindOfClass:[UIViewController class]]) {
+
+        UIViewController *parentViewController = [(UIViewController *)self parentViewController];
+        if (parentViewController && ![parentViewController isKindOfClass:[UINavigationController class]]) {
+            // parent view controller and should not be navigation controller.
+            return parentViewController;
+        }
+
+        UINavigationController *navigationController = [(UIViewController *)self navigationController];
+        if (navigationController) {
+            NSArray *viewControllers = navigationController.viewControllers;
+            NSUInteger index = [viewControllers indexOfObject:self];
+            if (index == 0 || index == NSNotFound) {
+                return navigationController;
+            }
+            if (index >= 1 && index < viewControllers.count) {
+                next = [viewControllers objectAtIndex:index-1];
+                return next;
+            }
+        }
+    }
+    if (!next) {
+        next = [self nextResponder];
+    }
+    return next;
 }
 
 - (dispatch_queue_t)_dispatchQueue

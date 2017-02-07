@@ -1,0 +1,21 @@
+{
+  "name": "HyUIActionEvent",
+  "version": "0.1.0",
+  "summary": "A Respond Chain Tool for UIResponder.",
+  "license": "MIT",
+  "description": "A Respond Chain Tool for UIResponder.",
+  "homepage": "https://github.com/HyanCat/HyUIActionEvent",
+  "authors": {
+    "HyanCat": "hyancat@live.cn"
+  },
+  "source": {
+    "git": "https://github.com/HyanCat/HyUIActionEvent.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "7.0"
+  },
+  "requires_arc": true,
+  "source_files": "HyUIActionEvent/**/*.{h,m}",
+  "public_header_files": "HyUIActionEvent/**/*.h"
+}
