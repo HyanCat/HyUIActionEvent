@@ -1,5 +1,7 @@
 PODS:
-  - HyUIActionEvent (0.1.0)
+  - HyUIActionEvent (0.1.0):
+    - HyUIActionEvent/Core (= 0.1.0)
+  - HyUIActionEvent/Core (0.1.0)
 
 DEPENDENCIES:
   - HyUIActionEvent (from `../`)
@@ -9,8 +11,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  HyUIActionEvent: 269b1ddcc1254f5df2fa75180007b332fbf77993
+  HyUIActionEvent: '079145e01cd82319d512a01de4d70937d6d51306'
 
 PODFILE CHECKSUM: be3d47e3053098df4b1a27e7782c04369783ac28
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0

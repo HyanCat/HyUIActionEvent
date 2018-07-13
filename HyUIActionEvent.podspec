@@ -16,8 +16,19 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, '7.0'
   s.requires_arc = true
+  s.frameworks = 'Foundation', 'UIKit'
 
-  s.source_files = 'HyUIActionEvent/**/*.{h,m}'
-  s.public_header_files = 'HyUIActionEvent/**/*.h'
+  s.default_subspec = 'Core'
+
+  s.subspec 'Core' do |core|
+    core.source_files = 'HyUIActionEvent/Classes/Core/*.{h,m}'
+    core.public_header_files = 'HyUIActionEvent/Classes/Core/*.h'
+  end
+
+  s.subspec 'Transition' do |transition|
+    transition.dependency 'Core'
+    transition.source_files = 'HyUIActionEvent/Classes/Transition/*.{h,m}'
+    transition.public_header_files = 'HyUIActionEvent/Classes/Transition/*.h'
+  end
   
 end
