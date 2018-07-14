@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'Transition' do |transition|
-    transition.dependency 'Core'
+    transition.dependency 'HyUIActionEvent/Core'
     transition.source_files = 'HyUIActionEvent/Classes/Transition/*.{h,m}'
     transition.public_header_files = 'HyUIActionEvent/Classes/Transition/*.h'
   end
