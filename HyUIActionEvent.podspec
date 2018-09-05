@@ -2,11 +2,11 @@
 Pod::Spec.new do |s|
   s.name             = "HyUIActionEvent"
   s.version          = "0.1.0"
-  s.summary          = "A Respond Chain Tool for UIResponder."
+  s.summary          = "An elegant way to handle UI action events based on UIResponder."
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
 
   s.description      = <<-DESC
-  A Respond Chain Tool for UIResponder, simply and powerful.
+  An elegant way to handle UI action events based on UIResponder, simply and powerful.
                        DESC
 
   s.homepage         = "https://github.com/HyanCat/HyUIActionEvent"
@@ -30,5 +30,5 @@ Pod::Spec.new do |s|
     transition.source_files = 'HyUIActionEvent/Classes/Transition/*.{h,m}'
     transition.public_header_files = 'HyUIActionEvent/Classes/Transition/*.h'
   end
-  
+
 end
